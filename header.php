@@ -41,8 +41,13 @@
                         <div class="hearer_icon d-flex">
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <div class="dropdown cart">
-                                <a href="<?php echo esc_url( wc_get_cart_url() )?>">
-                                    <span class="aranoz-head-cart"></span>
+                                <?php
+                                    if ( is_plugin_active('woocommerce/woocommerce.php') ) {
+                                        echo '<a href="'. esc_url( wc_get_cart_url() ) .'"><span class="aranoz-head-cart"></span>';
+                                    } else {
+                                        echo '<a href="#"><span class="aranoz-head-cart">0</span>';
+                                    }
+                                    ?>
                                     <i class="fa fa-cart-plus"></i>                              
                                 </a>
                             </div>
