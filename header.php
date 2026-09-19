@@ -18,8 +18,8 @@
                         <?php
                             echo aranoz_theme_logo( 'navbar-brand' );
                         ?>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -48,7 +48,7 @@
                                         echo '<a href="#"><span class="aranoz-head-cart">0</span>';
                                     }
                                     ?>
-                                    <i class="fa fa-cart-plus"></i>                              
+                                    <i class="fa-solid fa-cart-plus"></i>                              
                                 </a>
                             </div>
                         </div>

@@ -169,71 +169,71 @@
 			$scripts = array(
 				'style' => array(
 					array(
-						'handler'		=> 'google-font',
+						'handler'		=> 'aranoz-google-font',
 						'file' 			=> $this->google_font(),
 					),
 					array(
-						'handler'		=> 'bootstrap',
+						'handler'		=> 'aranoz-bootstrap',
 						'file' 			=> $cssPath.'bootstrap.min.css',
 						'dependency' 	=> array(),
-						'version' 		=> '1.0',
+						'version' 		=> '5.3.8-4',
 					),
 					array(
-						'handler'		=> 'animate',
+						'handler'		=> 'aranoz-animate',
 						'file' 			=> $cssPath.'animate.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'owl-carousel',
+						'handler'		=> 'aranoz-owl-carousel',
 						'file' 			=> $cssPath.'owl.carousel.min.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'font-awesome',
+						'handler'		=> 'aranoz-font-awesome',
 						'file' 			=> $cssPath.'font-awesome.min.css',
 						'dependency' 	=> array(),
-						'version' 		=> '1.0',
+						'version' 		=> '7.3.1-1',
 					),
 					array(
-						'handler'		=> 'themify',
+						'handler'		=> 'aranoz-themify',
 						'file' 			=> $cssPath.'themify-icons.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'flaticon',
+						'handler'		=> 'aranoz-flaticon',
 						'file' 			=> $cssPath.'flaticon.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'magnific-popup-css',
+						'handler'		=> 'aranoz-magnific-popup-css',
 						'file' 			=> $cssPath.'magnific-popup.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'slick-css',
+						'handler'		=> 'aranoz-slick-css',
 						'file' 			=> $cssPath.'slick.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'nice-select-css',
+						'handler'		=> 'aranoz-nice-select-css',
 						'file' 			=> $cssPath.'nice-select.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'default-css',
+						'handler'		=> 'aranoz-default-css',
 						'file' 			=> $cssPath.'default.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
 					),
 					array(
-						'handler'		=> 'style-css',
+						'handler'		=> 'aranoz-style-css',
 						'file' 			=> $cssPath.'style.css',
 						'dependency' 	=> array(),
 						'version' 		=> '1.0',
@@ -247,91 +247,77 @@
 				
 				'scripts' => array(
 					array(
-						'handler'		=> 'popper',
-						'file' 			=> $jsPath.'popper.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '4.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'bootstrap',
+						'handler'		=> 'aranoz-bootstrap',
 						'file' 			=> $jsPath.'bootstrap.min.js',
 						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '4.1.3',
+						'version' 		=> '5.3.8-4',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'magnific-popup-js',
+						'handler'		=> 'aranoz-magnific-popup-js',
 						'file' 			=> $jsPath.'jquery.magnific-popup.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'swiper-min-js',
+						'handler'		=> 'aranoz-swiper-min-js',
 						'file' 			=> $jsPath.'swiper.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'instagram-feed-js',
+						'handler'		=> 'aranoz-instagram-feed-js',
 						'file' 			=> $jsPath.'jquery.instagramFeed.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'masonry-pkgd-js',
-						'file' 			=> $jsPath.'masonry.pkgd.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'owl-carousel-js',
+						'handler'		=> 'aranoz-owl-carousel-js',
 						'file' 			=> $jsPath.'owl.carousel.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'jquery-nice-select-js',
+						'handler'		=> 'aranoz-jquery-nice-select-js',
 						'file' 			=> $jsPath.'jquery.nice-select.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'jquery-counterup-js',
+						'handler'		=> 'aranoz-jquery-counterup-js',
 						'file' 			=> $jsPath.'jquery.counterup.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'waypoints-min-js',
+						'handler'		=> 'aranoz-waypoints-min-js',
 						'file' 			=> $jsPath.'waypoints.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'jquery-ajaxchimp-js',
+						'handler'		=> 'aranoz-jquery-ajaxchimp-js',
 						'file' 			=> $jsPath.'jquery.ajaxchimp.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'slick-min-js',
+						'handler'		=> 'aranoz-slick-min-js',
 						'file' 			=> $jsPath.'slick.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'waypoints-js',
+						'handler'		=> 'aranoz-waypoints-js',
 						'file' 			=> $jsPath.'waypoints.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
@@ -341,7 +327,7 @@
 					array(
 						'handler'		=> 'aranoz-custom',
 						'file' 			=> $jsPath.'custom.js',
-						'dependency' 	=> array( 'jquery' ),
+						'dependency' 	=> array( 'jquery', 'masonry' ),
 						'version' 		=> $this->aranoz_version,
 						'in_footer' 	=> true
 					),

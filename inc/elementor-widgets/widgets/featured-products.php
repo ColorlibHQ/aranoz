@@ -268,7 +268,7 @@ class Aranoz_Featured_Product extends Widget_Base {
         <?php
             echo '<p>' .esc_html( $sub_title ) . '</p>';
             echo '<h3>' .esc_html( $title ) . '</h3>';
-            echo '<a href="'.esc_url( $anchor_link ).'" class="feature_btn">' .esc_html( $anchor_text ) . ' <i class="fa fa-play"></i></a>';
+            echo '<a href="'.esc_url( $anchor_link ).'" class="feature_btn">' .esc_html( $anchor_text ) . ' <i class="fa-solid fa-play"></i></a>';
             if( $feature_img ){
                 echo wp_kses_post( $feature_img );
             }

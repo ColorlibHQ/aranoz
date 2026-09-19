@@ -54,7 +54,7 @@ if ( $customer_orders ) : ?>
 				?>
 				<tr class="order">
 					<?php foreach ( $my_orders_columns as $column_id => $column_name ) : ?>
-						<td class="<?php echo esc_attr( $column_id ); ?>" data-title="<?php echo esc_attr( $column_name ); ?>">
+						<td class="<?php echo esc_attr( $column_id ); ?>" data-bs-title="<?php echo esc_attr( $column_name ); ?>">
 							<?php if ( has_action( 'woocommerce_my_account_my_orders_column_' . $column_id ) ) : ?>
 								<?php do_action( 'woocommerce_my_account_my_orders_column_' . $column_id, $order ); ?>
 
