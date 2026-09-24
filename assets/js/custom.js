@@ -1,7 +1,17 @@
-(function ($) {
-  "use strict";
+/**
+ * Aranoz front-end behaviour, without jQuery.
+ *
+ * The plugin calls keep the options they always had; ColorlibUI provides
+ * drop-in versions of Owl Carousel, Slick, Magnific Popup and AjaxChimp that
+ * build the same markup, so the theme's stylesheets apply unchanged.
+ */
+(function () {
+  'use strict';
 
-  $('.popup-youtube, .popup-vimeo').magnificPopup({
+  var UI = window.ColorlibUI;
+  if (!UI) return;
+
+  UI.magnific('.popup-youtube, .popup-vimeo', {
     // disableOn: 700,
     type: 'iframe',
     mainClass: 'mfp-fade',
@@ -10,136 +20,39 @@
     fixedContentPos: false
   });
 
-
-
-  var review = $('.textimonial_iner');
-  if (review.length) {
-    review.owlCarousel({
-      items: 1,
-      loop: true,
-      dots: true,
-      autoplay: true,
-      autoplayHoverPause: true,
-      autoplayTimeout: 5000,
-      nav: false,
-      responsive: {
-        0: {
-          margin: 15,
-
-        },
-        600: {
-          margin: 10,
-        },
-        1000: {
-          margin: 10,
-        }
-      }
-    });
-  }
-  var best_product_slider = $('.best_product_slider');
-  if (best_product_slider.length) {
-    best_product_slider.owlCarousel({
-      items: 4,
-      loop: true,
-      dots: false,
-      autoplay: true,
-      autoplayHoverPause: true,
-      autoplayTimeout: 5000,
-      nav: true,
-      navText: ["next", "previous"],
-      responsive: {
-        0: {
-          margin: 15,
-          items: 1,
-          nav: false
-        },
-        576: {
-          margin: 15,
-          items: 2,
-          nav: false
-        },
-        768: {
-          margin: 30,
-          items: 3,
-          nav: true
-        },
-        991: {
-          margin: 30,
-          items: 4,
-          nav: true
-        }
-      }
-    });
-  }
-
-  //product list slider
-  var product_list_slider = $('.product_list_slider');
-  if (product_list_slider.length) {
-    product_list_slider.owlCarousel({
-      items: 1,
-      loop: true,
-      dots: false,
-      autoplay: true,
-      autoplayHoverPause: true,
-      autoplayTimeout: 5000,
-      nav: true,
-      navText: ["next", "previous"],
-      smartSpeed: 1000,
-      responsive: {
-        0: {
-          margin: 15,
-          nav: false,
-          items: 1
-        },
-        600: {
-          margin: 15,
-          items: 1,
-          nav: false
-        },
-        768: {
-          margin: 30,
-          nav: true,
-          items: 1
-        }
-      }
-    });
-  }
-
-  //single banner slider
-  // var banner_slider = $('.banner_slider');
-  // if (banner_slider.length) {
-  //   banner_slider.owlCarousel({
-  //     items: 1,
-  //     loop: true,
-  //     dots: false,
-  //     autoplay: true,
-  //     autoplayHoverPause: true,
-  //     autoplayTimeout: 5000,
-  //     nav: true,
-  //     navText: ["next","previous"],
-  //     smartSpeed: 1000,
-  //   });
-  // }
-
-  if ($('.img-gal').length > 0) {
-    $('.img-gal').magnificPopup({
-      type: 'image',
-      gallery: {
-        enabled: true
-      }
-    });
-  }
-
-
-  //single banner slider
-  $('.banner_slider').on('initialized.owl.carousel changed.owl.carousel', function (e) {
-    function pad2(number) {
-      return (number < 10 ? '0' : '') + number
+  UI.owl('.textimonial_iner', {
+    items: 1,
+    loop: true,
+    dots: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 5000,
+    nav: false,
+    responsive: {
+      0: { margin: 15 },
+      600: { margin: 10 },
+      1000: { margin: 10 }
     }
-    var carousel = e.relatedTarget;
-    $('.slider-counter').text(pad2(carousel.current()));
+  });
 
-  }).owlCarousel({
+  UI.owl('.best_product_slider', {
+    items: 4,
+    loop: true,
+    dots: false,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 5000,
+    nav: true,
+    navText: ['next', 'previous'],
+    responsive: {
+      0: { margin: 15, items: 1, nav: false },
+      576: { margin: 15, items: 2, nav: false },
+      768: { margin: 30, items: 3, nav: true },
+      991: { margin: 30, items: 4, nav: true }
+    }
+  });
+
+  UI.owl('.product_list_slider', {
     items: 1,
     loop: true,
     dots: false,
@@ -147,42 +60,55 @@
     autoplayHoverPause: true,
     autoplayTimeout: 5000,
     nav: true,
-    navText: ["next", "previous"],
+    navText: ['next', 'previous'],
     smartSpeed: 1000,
     responsive: {
-      0: {
-        nav: false
-      },
-      600: {
-        nav: false
-      },
-      768: {
-        nav: true
-      }
+      0: { margin: 15, nav: false, items: 1 },
+      600: { margin: 15, items: 1, nav: false },
+      768: { margin: 30, nav: true, items: 1 }
     }
   });
 
-
-
-  // niceSelect js code
-  $(document).ready(function () {
-    ColorlibUI.enhanceSelects('select');
+  UI.magnific('.img-gal', {
+    type: 'image',
+    gallery: { enabled: true }
   });
 
-  // menu fixed js code
-  // $(window).scroll(function () {
-  //   var window_top = $(window).scrollTop() + 1;
-  //   if (window_top > 50) {
-  //     $('.main_menu').addClass('menu_fixed animated fadeInDown');
-  //   } else {
-  //     $('.main_menu').removeClass('menu_fixed animated fadeInDown');
-  //   }
-  // });
+  // The banner slider shows its current slide number, zero-padded.
+  UI.ready(function () {
+    function pad2(number) {
+      return (number < 10 ? '0' : '') + number;
+    }
+    function showCurrent(e) {
+      var counter = document.querySelector('.slider-counter');
+      if (counter) counter.textContent = pad2(e.detail.relatedTarget.current());
+    }
+    UI.toElements('.banner_slider').forEach(function (el) {
+      el.addEventListener('initialized.owl.carousel', showCurrent);
+      el.addEventListener('changed.owl.carousel', showCurrent);
+    });
+    UI.owl('.banner_slider', {
+      items: 1,
+      loop: true,
+      dots: false,
+      autoplay: true,
+      autoplayHoverPause: true,
+      autoplayTimeout: 5000,
+      nav: true,
+      navText: ['next', 'previous'],
+      smartSpeed: 1000,
+      responsive: {
+        0: { nav: false },
+        600: { nav: false },
+        768: { nav: true }
+      }
+    });
+  });
 
+  UI.enhanceSelects('select');
+  UI.counter('.counter', { time: 2000 });
 
-  ColorlibUI.counter('.counter', { time: 2000 });
-
-  $('.slider').slick({
+  UI.slick('.slider', {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -191,10 +117,10 @@
     asNavFor: '.slider-nav-thumbnails',
     autoplay: true,
     pauseOnFocus: true,
-    dots: true,
+    dots: true
   });
 
-  $('.slider-nav-thumbnails').slick({
+  UI.slick('.slider-nav-thumbnails', {
     slidesToShow: 3,
     slidesToScroll: 1,
     asNavFor: '.slider',
@@ -205,157 +131,77 @@
     centerMode: true,
     responsive: [{
       breakpoint: 480,
-      settings: {
-        centerMode: false,
-      }
+      settings: { centerMode: false }
     }]
   });
 
+  UI.ajaxChimp('#mc_embed_signup form, #mc_embed_signup_60_percent_products form, #mc_embed_signup_new_offer form');
 
-  // Search Toggle
-  $("#search_input_box").hide();
-  $("#search_1").on("click", function () {
-    $("#search_input_box").slideToggle();
-    $("#search_input").focus();
-  });
-  $("#close_search").on("click", function () {
-    $('#search_input_box').slideUp(500);
-  });
-
-  //------- Mailchimp js --------//  
-  function mailChimp() {
-    $('#mc_embed_signup').find('form').ajaxChimp();
-    $('#mc_embed_signup_60_percent_products').find('form').ajaxChimp();
-    $('#mc_embed_signup_new_offer').find('form').ajaxChimp();
-  }
-  mailChimp();
-
-  //------- makeTimer js --------//  
-  function makeTimer() {
-
-    var offerDate = $('.date_countdown').data('offer-date');	
-    var endTime = new Date( offerDate );
-    endTime = (Date.parse(endTime) / 1000);
-
-    var now = new Date();
-    now = (Date.parse(now) / 1000);
-
-    var timeLeft = endTime - now;
-
-    var days = Math.floor(timeLeft / 86400);
-    var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-    var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
-    var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-
-    if (hours < "10") {
-      hours = "0" + hours;
-    }
-    if (minutes < "10") {
-      minutes = "0" + minutes;
-    }
-    if (seconds < "10") {
-      seconds = "0" + seconds;
+  UI.ready(function () {
+    // Search toggle.
+    var box = document.getElementById('search_input_box');
+    var open = document.getElementById('search_1');
+    var close = document.getElementById('close_search');
+    if (box) {
+      box.style.display = 'none';
+      if (open) {
+        open.addEventListener('click', function () {
+          UI.slide(box, 'toggle');
+          var input = document.getElementById('search_input');
+          if (input) input.focus();
+        });
+      }
+      if (close) {
+        close.addEventListener('click', function () {
+          UI.slide(box, 'up', 500);
+        });
+      }
     }
 
-    $("#days").html("<span>Days</span>" + days);
-    $("#hours").html("<span>Hours</span>" + hours);
-    $("#minutes").html("<span>Minutes</span>" + minutes);
-    $("#seconds").html("<span>Seconds</span>" + seconds);
-
-  }
-// click counter js
-(function() {
- 
-  window.inputNumber = function(el) {
-
-    var min = el.attr('min') || false;
-    var max = el.attr('max') || false;
-
-    var els = {};
-
-    els.dec = el.prev();
-    els.inc = el.next();
-
-    el.each(function() {
-      init($(this));
+    // Offer countdown: days, hours, minutes and seconds to data-offer-date.
+    var countdown = document.querySelector('.date_countdown');
+    var parts = ['days', 'hours', 'minutes', 'seconds'].map(function (id) {
+      return document.getElementById(id);
     });
-
-    function init(el) {
-
-      els.dec.on('click', decrement);
-      els.inc.on('click', increment);
-
-      function decrement() {
-        var value = el[0].value;
-        value--;
-        if(!min || value >= min) {
-          el[0].value = value;
-        }
-      }
-
-      function increment() {
-        var value = el[0].value;
-        value++;
-        if(!max || value <= max) {
-          el[0].value = value++;
-        }
-      }
+    if (countdown && parts[0]) {
+      var endTime = Date.parse(new Date(countdown.getAttribute('data-offer-date'))) / 1000;
+      var labels = ['Days', 'Hours', 'Minutes', 'Seconds'];
+      var pad = function (n) { return n < 10 ? '0' + n : String(n); };
+      var tick = function () {
+        var left = endTime - Date.parse(new Date()) / 1000;
+        var days = Math.floor(left / 86400);
+        var hours = Math.floor((left - days * 86400) / 3600);
+        var minutes = Math.floor((left - days * 86400 - hours * 3600) / 60);
+        var seconds = Math.floor(left - days * 86400 - hours * 3600 - minutes * 60);
+        [days, pad(hours), pad(minutes), pad(seconds)].forEach(function (value, i) {
+          if (parts[i]) parts[i].innerHTML = '<span>' + labels[i] + '</span>' + value;
+        });
+      };
+      tick();
+      setInterval(tick, 1000);
     }
-  }
-})();
 
-inputNumber($('.input-number'));
-
-
-
-  setInterval(function () {
-    makeTimer();
-  }, 1000);
-
-  // click counter js
-
-
-  // var a = 0;
-  // $('.increase').on('click', function(){
-     
-    
-
-  //   console.log(  $(this).innerHTML='Product Count: '+ a++ );
-  // });
-
- var product_overview = $('#vertical');
- if(product_overview.length){
-  product_overview.lightSlider({
-    gallery:true,
-    item:1,
-    vertical:true,
-    verticalHeight:450,
-    thumbItem:3,
-    slideMargin:0,
-    speed:600,
-    autoplay: true,
-    responsive : [
-      {
-          breakpoint:991,
-          settings: {
-              item:1,
-              
-            }
-      },
-      {
-          breakpoint:576,
-          settings: {
-              item:1,
-              slideMove:1,
-              verticalHeight:350,
-            }
+    // Quantity steppers: the buttons either side of an .input-number.
+    UI.toElements('.input-number').forEach(function (input) {
+      var min = input.getAttribute('min');
+      var max = input.getAttribute('max');
+      var dec = input.previousElementSibling;
+      var inc = input.nextElementSibling;
+      if (dec) {
+        dec.addEventListener('click', function () {
+          var value = Number(input.value) - 1;
+          if (!min || value >= Number(min)) input.value = value;
+        });
       }
-  ]
-  });  
- }
-    
+      if (inc) {
+        inc.addEventListener('click', function () {
+          var value = Number(input.value) + 1;
+          if (!max || value <= Number(max)) input.value = value;
+        });
+      }
+    });
+  });
 
-
-
-
-}(jQuery));
+  // The old script also initialised lightSlider on #vertical, but the theme
+  // never loaded that plugin, so on any page with #vertical it threw instead.
+}());

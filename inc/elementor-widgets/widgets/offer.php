@@ -262,46 +262,36 @@ class Aranoz_Offer extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            //------- makeTimer js --------//  
-            function makeTimer() {
-
-                var offerDate = $('.date_countdown').data('offer-date');	
-                var endTime = new Date( offerDate );
-                endTime = (Date.parse(endTime) / 1000);
-
-                var now = new Date();
-                now = (Date.parse(now) / 1000);
-
-                var timeLeft = endTime - now;
-
-                var days = Math.floor(timeLeft / 86400);
-                var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-                var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
-                var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-
-                if (hours < "10") {
-                hours = "0" + hours;
-                }
-                if (minutes < "10") {
-                minutes = "0" + minutes;
-                }
-                if (seconds < "10") {
-                seconds = "0" + seconds;
-                }
-
-                $("#days").html("<span>Days</span>" + days);
-                $("#hours").html("<span>Hours</span>" + hours);
-                $("#minutes").html("<span>Minutes</span>" + minutes);
-                $("#seconds").html("<span>Seconds</span>" + seconds);
-
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                // Editor preview: the same countdown the front end runs (custom.js).
+                var countdown = document.querySelector('.date_countdown');
+                var parts = ['days', 'hours', 'minutes', 'seconds'].map(function (id) {
+                    return document.getElementById(id);
+                });
+                if (!countdown || !parts[0]) return;
+                var endTime = Date.parse(new Date(countdown.getAttribute('data-offer-date'))) / 1000;
+                var labels = ['Days', 'Hours', 'Minutes', 'Seconds'];
+                var pad = function (n) { return n < 10 ? '0' + n : String(n); };
+                setInterval(function () {
+                    var left = endTime - Date.parse(new Date()) / 1000;
+                    var days = Math.floor(left / 86400);
+                    var hours = Math.floor((left - days * 86400) / 3600);
+                    var minutes = Math.floor((left - days * 86400 - hours * 3600) / 60);
+                    var seconds = Math.floor(left - days * 86400 - hours * 3600 - minutes * 60);
+                    [days, pad(hours), pad(minutes), pad(seconds)].forEach(function (value, i) {
+                        if (parts[i]) parts[i].innerHTML = '<span>' + labels[i] + '</span>' + value;
+                    });
+                }, 1000);
             }
-
-            setInterval(function () {
-                makeTimer();
-            }, 1000);
-
-        })(jQuery);
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }

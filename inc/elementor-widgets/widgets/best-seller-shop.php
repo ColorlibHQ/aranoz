@@ -246,11 +246,11 @@ class Aranoz_Best_Seller_Shop extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            $(document).ready(function() {
-                var best_product_slider = $('.best_product_slider');
-                if (best_product_slider.length) {
-                    best_product_slider.owlCarousel({
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                UI.owl('.best_product_slider', {
                     items: 4,
                     loop: true,
                     dots: false,
@@ -282,9 +282,13 @@ class Aranoz_Best_Seller_Shop extends Widget_Base {
                         }
                     }
                     });
-                }
-            });
-        })(jQuery);
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }

@@ -257,12 +257,11 @@ class Aranoz_Awesome_Shop extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            $(document).ready(function() {
-                //product list slider
-                var product_list_slider = $('.product_list_slider');
-                if (product_list_slider.length) {
-                    product_list_slider.owlCarousel({
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                UI.owl('.product_list_slider', {
                     items: 1,
                     loop: true,
                     dots: false,
@@ -290,9 +289,13 @@ class Aranoz_Awesome_Shop extends Widget_Base {
                         }
                     }
                     });
-                }
-            });
-        })(jQuery);
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }

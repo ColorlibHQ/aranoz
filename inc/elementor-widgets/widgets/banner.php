@@ -307,40 +307,50 @@ class Aranoz_Banner extends Widget_Base {
         if( \Elementor\Plugin::$instance->editor->is_edit_mode() === true  ) {
         ?>
         <script>
-        ( function( $ ){
-            $(document).ready(function() {
-                //single banner slider
-                $('.banner_slider').on('initialized.owl.carousel changed.owl.carousel', function (e) {
-                    function pad2(number) {
-                    return (number < 10 ? '0' : '') + number
-                    }
-                    var carousel = e.relatedTarget;
-                    $('.slider-counter').text(pad2(carousel.current()));
-
-                }).owlCarousel({
-                    items: 1,
-                    loop: true,
-                    dots: false,
-                    autoplay: true,
-                    autoplayHoverPause: true,
-                    autoplayTimeout: 5000,
-                    nav: true,
-                    navText: ["next", "previous"],
-                    smartSpeed: 1000,
-                    responsive: {
-                    0: {
-                        nav: false
-                    },
-                    600: {
-                        nav: false
-                    },
-                    768: {
-                        nav: true
-                    }
-                    }
+        (function () {
+            function run() {
+                var UI = window.ColorlibUI;
+                if (!UI) return;
+                function pad2(number) {
+                    return (number < 10 ? '0' : '') + number;
+                }
+                function showCurrent(e) {
+                    var counter = document.querySelector('.slider-counter');
+                    if (counter) counter.textContent = pad2(e.detail.relatedTarget.current());
+                }
+                UI.toElements('.banner_slider').forEach(function (el) {
+                    el.addEventListener('initialized.owl.carousel', showCurrent);
+                    el.addEventListener('changed.owl.carousel', showCurrent);
                 });
-            });
-        })(jQuery);
+                UI.owl('.banner_slider', {
+                        items: 1,
+                        loop: true,
+                        dots: false,
+                        autoplay: true,
+                        autoplayHoverPause: true,
+                        autoplayTimeout: 5000,
+                        nav: true,
+                        navText: ["next", "previous"],
+                        smartSpeed: 1000,
+                        responsive: {
+                        0: {
+                            nav: false
+                        },
+                        600: {
+                            nav: false
+                        },
+                        768: {
+                            nav: true
+                        }
+                        }
+                    });
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+            } else {
+                run();
+            }
+        })();
         </script>
         <?php 
         }

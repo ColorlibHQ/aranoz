@@ -10,7 +10,7 @@
 add_action( 'wp_enqueue_scripts', 'aranoz_sl_enqueue_scripts' );
 function aranoz_sl_enqueue_scripts() {
 
-	wp_enqueue_script( 'aranoz-post-likes', ARANOZ_DIR_JS_URI . 'post-likes.js', array( 'jquery' ), '0.5', false );
+	wp_enqueue_script( 'aranoz-post-likes', ARANOZ_DIR_JS_URI . 'post-likes.js', array( 'aranoz-ui-js' ), '0.5-s2', true );
 
 	wp_localize_script( 'aranoz-post-likes', 'simpleLikes', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
