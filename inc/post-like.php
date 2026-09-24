@@ -14,6 +14,7 @@ function aranoz_sl_enqueue_scripts() {
 
 	wp_localize_script( 'aranoz-post-likes', 'simpleLikes', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'like'    => esc_html__( 'Like', 'aranoz' ),
 		'unlike'  => esc_html__( 'Unlike', 'aranoz' )
 	) );
 }
