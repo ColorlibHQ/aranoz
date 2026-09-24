@@ -268,36 +268,8 @@
 						'in_footer' 	=> true
 					),
 					array(
-						'handler'		=> 'aranoz-instagram-feed-js',
-						'file' 			=> $jsPath.'jquery.instagramFeed.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
 						'handler'		=> 'aranoz-owl-carousel-js',
 						'file' 			=> $jsPath.'owl.carousel.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'aranoz-jquery-nice-select-js',
-						'file' 			=> $jsPath.'jquery.nice-select.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'aranoz-jquery-counterup-js',
-						'file' 			=> $jsPath.'jquery.counterup.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
-						'in_footer' 	=> true
-					),
-					array(
-						'handler'		=> 'aranoz-waypoints-min-js',
-						'file' 			=> $jsPath.'waypoints.min.js',
 						'dependency' 	=> array( 'jquery' ),
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
@@ -316,19 +288,19 @@
 						'version' 		=> '1.0',
 						'in_footer' 	=> true
 					),
+					
 					array(
-						'handler'		=> 'aranoz-waypoints-js',
-						'file' 			=> $jsPath.'waypoints.min.js',
-						'dependency' 	=> array( 'jquery' ),
-						'version' 		=> '1.0',
+						'handler'		=> 'aranoz-ui-js',
+						'file' 			=> $jsPath.'colorlib-ui.js',
+						'dependency' 	=> array(),
+						'version' 		=> '2.1.1',
 						'in_footer' 	=> true
 					),
-					
 					array(
 						'handler'		=> 'aranoz-custom',
 						'file' 			=> $jsPath.'custom.js',
-						'dependency' 	=> array( 'jquery', 'masonry' ),
-						'version' 		=> $this->aranoz_version,
+						'dependency' 	=> array( 'jquery', 'masonry', 'aranoz-ui-js' ),
+						'version' 		=> $this->aranoz_version . '-s1',
 						'in_footer' 	=> true
 					),
 
