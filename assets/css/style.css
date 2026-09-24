@@ -6678,12 +6678,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-/* line 798, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
-.primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center center/cover;
-  border: none;
-}
-
 /* line 806, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
 .confirm-checkbox {
   width: 16px;
@@ -6718,12 +6712,6 @@ h6 {
   border-radius: 3px;
   cursor: pointer;
   border: 1px solid #f1f1f1;
-}
-
-/* line 835, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
-.confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center center/cover;
-  border: none;
 }
 
 /* line 843, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
@@ -6768,12 +6756,6 @@ h6 {
   z-index: 3;
 }
 
-/* line 876, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
-.disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
-  border: none;
-}
-
 /* line 884, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
 .primary-radio {
   width: 16px;
@@ -6810,12 +6792,6 @@ h6 {
   border: 1px solid #f1f1f1;
 }
 
-/* line 913, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
-.primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
-  border: none;
-}
-
 /* line 921, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
 .confirm-radio {
   width: 16px;
@@ -6850,12 +6826,6 @@ h6 {
   border-radius: 8px;
   cursor: pointer;
   border: 1px solid #f1f1f1;
-}
-
-/* line 950, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
-.confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center center/cover;
-  border: none;
 }
 
 /* line 958, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
@@ -6898,12 +6868,6 @@ h6 {
 .disabled-radio input:disabled {
   cursor: not-allowed;
   z-index: 3;
-}
-
-/* line 991, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
-.disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
-  border: none;
 }
 
 /* line 999, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_elements.scss */
@@ -7537,14 +7501,6 @@ h6 {
 /* line 185, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_contact.scss */
 .modal-message .modal-dialog .modal-content .modal-header p {
   display: block;
-}
-
-/* line 1, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_breadcrumb.scss */
-.breadcrumb_bg {
-  background-image: url("../img/breadcrumb.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /* line 5, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_breadcrumb.scss */
